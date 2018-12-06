@@ -1,0 +1,53 @@
+<div class="default-bg">
+    <div class="contentContainer row">
+        <div class="col-4 navBar">
+            <app-nav-bar actualRoute="/gift-list"></app-nav-bar>
+        </div>
+        <div class="col-8">
+            <div class="col-10">
+                <div class="imgTop">
+                    <div class="weddingNames">
+                        <p>Casamento</p>
+                        <p>{{user.name_1}} e {{user.name_2}}</p>
+                    </div>
+                </div>
+                <div class="page-content">
+                    <h1>Lista de Presentes</h1>
+                    <form #giftForm="ngForm" (ngSubmit)="onSubmit()">
+                        <div class="row m-0">
+                            <div class="col-4">
+                                <div class="simple-Input">
+                                    <label for="email">Nome</label>
+                                    <input type="text" [(ngModel)]="data.name" autocomplete="off" required name="name">
+                                </div>
+                            </div>
+                            <div class="col-8 d-flex" style="align-items: flex-end;">
+                                <div class="simple-Input w-100">
+                                    <label for="email">Link</label>
+                                    <input type="text" [(ngModel)]="data.link" autocomplete="off" required name="link">
+                                </div>
+                                <div class="">
+                                    <input type="submit" name="" value="Adicionar">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <h2 class="ml-3 mt-3">Listas</h2>
+                    <div class="row m-0 ml-3 d-flex" style="align-items: flex-end;" *ngFor="let list of giftLists">
+                        <div class="col-4">
+                            {{list.name}}
+                        </div>
+                        <div class="col-8 d-flex" style="align-items: flex-end;">
+                            <div class="simple-Input w-100">
+                               <a href="{{list.link}}" target="_blank">{{list.name}}</a>
+                            </div>
+                            <div class="">
+                                <fa-icon [icon]="faTrashAlt" (click)="delete(list)" class=""></fa-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

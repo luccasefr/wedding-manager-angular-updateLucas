@@ -1,0 +1,4 @@
+<div class="navContainer">
+    <img src="/assets/imgs/logo-login.png" class="logoImg" alt="">
+    <a *ngFor="let item of routes" [routerLink]="item.route" routerLinkActive="active" [ngStyle]="{backgroundColor: item.bg ? '#fcd6cb':none}">{{item.name}}</a>
+</div>

@@ -1,0 +1,90 @@
+.words-Input label{
+    display: block;
+    color: #f99a82;
+}
+
+.words-Input{
+    display: flex;
+    align-items: flex-end;
+}
+
+.words-Input input[type=text]{
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #d8d7d7;
+}
+
+.words-Input input[type=text]:focus{
+    border-bottom: 2px solid #f99a82;
+    outline: none;
+}
+
+.words-box{
+    width: 100%;
+}
+
+.words-Input input[type=submit]{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #929292;
+}
+
+.words-Input input[type=submit]:hover{
+    color: #f99a82;
+}
+
+.words-Input input[type=submit]:focus{
+    outline: none;
+}
+
+.posts{
+    position: relative;
+}
+
+.posts .aproveBox{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 30px;
+}
+
+.posts .aproveBox .aprove{
+    color: #68d568;
+}
+
+.posts .aproveBox .denny{
+    color:#ff4927;
+}
+
+
+.likeBox{
+    display: flex;
+    font-size: 20px;
+    justify-content: flex-end;
+}
+
+.guestPicture{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+}
+
+.postName{
+    display: flex;
+    align-items: center;
+}
+
+.publications .chose div p:not(.selected){
+    cursor: pointer;
+}
+
+.publications .chose div p{
+    border-bottom: 2px solid #d8d7d7;
+}
+.publications .chose div p.selected{
+    border-bottom: none;
+    color: #f99a82;
+}

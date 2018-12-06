@@ -1,0 +1,15 @@
+input[type=submit]{
+    background-color: transparent;
+    border: none;
+    font-family: 'Bebas';
+    color: #f99a82;
+    cursor: pointer;
+}
+
+input[type=submit]:focus{
+    outline: none;
+}
+
+fa-icon{
+    cursor: pointer;
+}

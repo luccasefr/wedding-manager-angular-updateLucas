@@ -1,0 +1,109 @@
+<div class="default-bg">
+  <div class="contentContainer row">
+    <div class="col-4 navBar">
+      <app-nav-bar actualRoute="/tie"></app-nav-bar>
+    </div>
+    <div class="col-8">
+      <div class="col-10">
+        <div class="imgTop">
+          <div class="weddingNames">
+            <p>Casamento</p>
+            <p>{{user.name_1}} e {{user.name_2}}</p>
+          </div>
+        </div>
+        <div class="page-content">
+          <h1>Doação da gravata</h1>
+        </div>
+        <div id="divH" class=" row">
+          <div class="contentContainer row page col-12">
+            <div class="col-md-2">
+              <img id="tie" src="assets/imgs/tie.png" alt="">
+            </div>
+            <div class="col-md-4">
+                <label class="checkbox-Input" for="">PEDAÇOS</label>
+              <div *ngFor="let tie of ties" class="row d-flex">
+                <div class="col-10">
+                    <label for="">VALOR DE R${{tie.value}},00</label>
+                </div>
+                <div class="col-2 d-flex">
+                   <fa-icon [icon]="faTrashAlt" (click)="delete(tie)" class=""></fa-icon>
+                
+                </div>
+                
+              </div>
+              
+              <!-- <div class="p1">
+
+                <p>
+                  <h6>ACIMA DE R$100,00</h6>
+              </div>
+              <div class="p2">
+                <p>
+                  <h6>DE R$21,00 A R$100,00</h6>
+              </div>
+              <div class="p3">
+                <p>
+                  <h6>ATÉ R$20,00</h6>
+              </div> -->
+            </div>
+            <div class="col-md-6">
+              <div>
+                <div class="col-md-12">
+                  <label class="checkbox-Input" for="">VALORES DA GRAVATA</label>
+                </div>
+                <div class="contentContainer col-md-12">
+                  <form #tiePieceForm="ngForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                      <div class="simple-Input col-md-8">
+                        <label for="">VALOR</label>
+                        <input class="" type="text" [(ngModel)]="data.value" required name="value">
+                      </div>
+                      <div class="submit-Input col-md-4" style="display:flex;justify-content: flex-end;align-items: flex-end;">
+                        <input type="submit">
+                      </div>
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+              <div>
+                <table class="col-md-12 tt">
+                  <thead>
+                    <th>NOME</th>
+                    <th>VALOR</th>
+                    
+                  </thead>
+                  
+                    <tr *ngFor="let tiesBuy of tiesBuys">
+                      <th>{{tiesBuy.name}}</th>
+                      <th>{{tiesBuy.value}}</th>
+                    </tr>
+                    <tr>
+                      <th class="checkbox-Input" >Total</th>
+                      <th class="checkbox-Input" >{{totalValue}}</th>
+                    </tr>
+                    
+                      
+                  
+                  
+                  <!-- <tr>
+                    <th>Ciclano</th>
+                    <th>R$100,00</th>
+                    <th>R$160,00</th>
+                  </tr>
+                  <tr>
+                    <th>Beltrano</th>
+                    <th>R$40,00</th>
+                    <th></th>
+                  </tr> -->
+                </table>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

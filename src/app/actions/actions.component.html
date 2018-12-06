@@ -1,0 +1,122 @@
+<div class="default-bg">
+    <div class="contentContainer row">
+        <div class="col-4 navBar">
+            <app-nav-bar actualRoute="/actions"></app-nav-bar>
+        </div>
+        <div class="col-8">
+            <div class="col-10">
+                <div class="imgTop">
+                    <div class="weddingNames">
+                        <p>Casamento</p>
+                        <p>{{user.name_1}} e {{user.name_2}}</p>
+                    </div>
+                </div>
+                <div class="page-content">
+                    <h1>Ações</h1>
+                    <form #actionForm="ngForm" (ngSubmit)="onSubmit()">
+                        <div class="contentContainer row">
+                            <div class="col-12">
+                                <div class="simple-Input">
+                                    <label for="email">Titulo</label>
+                                    <input type="text" [(ngModel)]="data.title" autocomplete="off" required name="title" value="">
+                                </div>
+                            </div>
+                            <div class="col-6">
+
+                            </div>
+                            <div class="col-12">
+                                <div class="checkbox-Input">
+                                    <input type="checkbox" [(ngModel)]="expense" name="expense" value="">É uma despesa?
+                                </div>
+                            </div>
+                            <div *ngIf="expense" class="col-6">
+                                <div class="simple-Input">
+                                    <label for="email">Valor</label>
+                                    <input type="text" [(ngModel)]="data.expense_value" autocomplete="off" required="{{expense}}" name="expense_value" value="">
+                                </div>
+                            </div>
+                            <div *ngIf="expense" class="col-6">
+                                <div class="simple-Input">
+                                    <label for="email">Data do pagamento</label>
+                                    <div style="display:flex;width:100%;">
+                                        <fa-icon [icon]="calendar" (click)="payment.toggle()" class="fa-2x dateIcon" style="position:absolute;bottom:0;"></fa-icon>
+                                        <input type="text" [(ngModel)]="data.expense_date" required="{{expense}}" name="expense_date" placeholder="2018-12-30" style="padding-left:35px" ngbDatepicker #payment="ngbDatepicker"/>
+                                    </div>
+                                    <!-- <button (click)="d.toggle()">Toggle</button> -->
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="checkbox-Input">
+                                    <input type="checkbox" [(ngModel)]="notificate" name="notificate" value="">Notificar convidados?
+                                </div>
+                            </div>
+                            <div *ngIf="notificate" class="col-6">
+
+                            </div>
+                            <div *ngIf="notificate" class="col-6">
+                                <div class="simple-Input">
+                                    <label for="email">intervalo da notificação</label>
+                                    <div style="display:flex;width:100%;">
+                                        <fa-icon [icon]="calendar" (click)="notification.toggle()" class="fa-2x dateIcon" style="position:absolute;bottom:0;"></fa-icon>
+                                        <input type="text" style="padding-left:35px" value="{{getFormatedFromToDate()}}">
+                                        <input type="text" (dateSelect)="onDateSelection($event,notification)" [dayTemplate]="t" [autoClose]="false" style="padding-left:35px; position:absolute; visibility:hidden" ngbDatepicker #notification="ngbDatepicker"/>
+                                        <!-- <ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t">
+                                        </ngb-datepicker> -->
+                                        <ng-template #t let-date="date" let-focused="focused">
+                                            <span class="custom-day"
+                                            [class.focused]="focused"
+                                            [class.range]="isFrom(date) || isTo(date) || isInside(date) || isHovered(date)"
+                                            [class.faded]="isHovered(date) || isInside(date)"
+                                            (mouseenter)="hoveredDate = date"
+                                            (mouseleave)="hoveredDate = null">
+                                            {{ date.day }}
+                                        </span>
+                                    </ng-template>
+                                </div>
+                                <!-- <button (click)="d.toggle()">Toggle</button> -->
+                            </div>
+                        </div>
+                        <div *ngIf="notificate" class="col-12">
+                            <textarea placeholder="Digite a mesnagem que será enviada aos convidados" required="{{notificate}}" [(ngModel)]="data.message" name="message" rows="4" class="col-12" style="resize:none;margin-top:10px;"></textarea>
+                        </div>
+                        <div class="col-6">
+
+                        </div>
+                        <div class="col-6">
+                            <div class="submit-Input">
+                                <input style="float:right" [disabled]="!(actionForm.valid && ((fromDate!=null && toDate!=null) || !notificate) )" type="submit" name="" value="Registrar">
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                    <!-- <div class="col-6">
+                        <pre>From: {{ fromDate | json }} </pre>
+                        <pre>To: {{ toDate | json }} </pre>
+                    </div> -->
+                    <div class="col-12">
+                        <table class="col-12">
+                            <thead>
+                                <tr>
+                                    <th>Criado em</th>
+                                    <th>Titulo</th>
+                                    <th>Valor</th>
+                                    <th>Data do pagamento</th>
+                                    <th>Notificação</th>
+                                </tr>
+                            </thead>
+                            <tbody class="centralize">
+                                <tr *ngFor="let action of actions">
+                                    <td>{{action.created_at | date:'dd/MM/yyyy'}}</td>
+                                    <td>{{action.title}}</td>
+                                    <td>{{action.expense==1 ? action.expense_value : '--'}}</td>
+                                    <td>{{action.expense==1 ? action.expense_date : '--'}}</td>
+                                    <td style="text-align:center;"> <fa-icon *ngIf="action.notify_guests==1" [icon]="faCheckSquare"></fa-icon><fa-icon *ngIf="action.notify_guests==0" [icon]="faSquare"></fa-icon> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

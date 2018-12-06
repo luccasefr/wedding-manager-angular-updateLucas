@@ -1,0 +1,44 @@
+<div class="default-bg">
+  <div class="contentContainer row">
+    <div class="col-4 navBar">
+      <app-nav-bar actualRoute="/photos"></app-nav-bar>
+    </div>
+    <div class="col-8">
+      <div class="col-10">
+        <div class="imgTop">
+          <div class="weddingNames">
+            <p>Casamento</p>
+            <p>{{user.name_1}} e {{user.name_2}}</p>
+          </div>
+        </div>
+        <div class="page-content">
+          <h1>Fotos com os Noivos</h1>
+        </div>
+        <div>
+          <label for="">
+            <p style="text-align:left !important">ESCOLHA FOTOS DE FUNDO PARA USAR COM OS CONVIDADOS</p>
+          </label>
+        </div>
+
+        <div class="contentContainer row col-12 page">
+          <div class="col-6 row">
+            <div>
+              <input type="image" src="./assets/imgs/download.jpg" style="width: 340px" alt="">
+            </div>
+            <div>
+              <fa-icon [icon]="trash" (click)="payment.toggle()" class="fa-2x dateIcon" style="position:relative;left: 15px; top:0;"></fa-icon>
+            </div>
+          </div>
+          <div class="col-6 row">
+            <div>
+              <input type="image" src="./assets/imgs/download2.jpg" style="width: 340px" alt="">
+            </div>
+            <div>
+              <fa-icon [icon]="trash" (click)="payment.toggle()" class="fa-2x dateIcon" style="position:relative;left: 15px; top:0;"></fa-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

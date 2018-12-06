@@ -1,0 +1,77 @@
+<div class="default-bg">
+    <div class="contentContainer row">
+        <div class="col-4 navBar">
+            <app-nav-bar actualRoute="/guests"></app-nav-bar>
+        </div>
+        <div class="col-8">
+            <div class="col-10">
+                <div class="imgTop">
+                    <div class="weddingNames">
+                        <p>Casamento</p>
+                        <p>{{user.name_1}} e {{user.name_2}}</p>
+                    </div>
+                </div>
+                <div class="page-content">
+                    <h1>Convidados</h1>
+                    <form #guestForm="ngForm" (ngSubmit)="onSubmit()">
+                        <div class="contentContainer row">
+                            <div class="col-6">
+                                <div class="simple-Input">
+                                    <label for="name">Nome</label>
+                                    <input type="text" [(ngModel)]="guest.name" autocomplete="off" name="name" value="name">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="simple-Input">
+                                    <label for="name">Telefone</label>
+                                    <input type="text" minlength="9" [(ngModel)]="guest.phone" autocomplete="off" name="phone" value="phone">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="simple-Input">
+                                    <label for="name">E-mail</label>
+                                    <input type="text" [(ngModel)]="guest.email" autocomplete="off" name="email" value="email">
+                                </div>
+                            </div>
+                            <div class="col-6" style="display:flex;justify-content: flex-end;align-items: flex-end;">
+                                <div class="submit-Input">
+                                    <input style="float:right" [disabled]="!(guestForm.valid)" type="submit" name="" value="Convidar">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- <img src="{{image}}" alt=""> -->
+                    <div class="col-12">
+                        <table class="col-12">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>E-mail</th>
+                                    <th>Telefone</th>
+                                    <th>Confirmado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr (contextmenu)="onContextMenu($event,guest)" *ngFor="let guest of guests">
+                                    <td>{{guest.name ? guest.name: '--'}}</td>
+                                    <td>{{guest.email ? guest.email: '--'}}</td>
+                                    <td>{{guest.phone ? guest.phone: '--'}}</td>
+                                    <td style="text-align:center;"> <fa-icon *ngIf="guest.confirmed==1" [icon]="faCheckSquare"></fa-icon><fa-icon *ngIf="guest.confirmed==0" [icon]="faSquare"></fa-icon> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-12 mt-3" style="display:flex;justify-content: center">
+                        <button type="button" (click)="guestService.getAllQrCodes()" class="standard" name="button">Todos os QrCodes</button>
+                        <button type="button" (click)="guestService.getAllInvites()"  class="standard" name="button">Todos os Convites</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="image" class="modalQrCode">
+    <fa-icon [icon]="faTimesCircle" (click)="image=null" class="fa-2x exit-icon"></fa-icon>
+    <img src="{{image}}" alt="">
+</div>

@@ -1,0 +1,112 @@
+.bg{
+    /* background: url('../assets/imgs/bg-login.png'); */
+    background-image: url('/assets/imgs/bg-login.png');
+    background-size: cover;
+    background-position: left;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.content-box{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top:0;
+    bottom: 0;
+    left: 50%;
+    right: 0;
+    /* background-color: red; */
+}
+
+.content-box .logoImg{
+    width: 30%;
+    width: 200px;
+}
+
+.decoImg{
+    width: 60%;
+}
+
+.content-box .loginBox{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 14px 2px #cfcbcb;
+    padding: 15px;
+    width: 50%;
+}
+
+.content-box .loginBox label{
+    display: block;
+    font-family: 'Bebas';
+    color: #e9887b;
+    font-size: 20px;
+}
+
+.input-group{
+    margin-top: 20px;
+}
+
+.logoPro{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 30px;
+}
+
+input{
+    border: none;
+    border-bottom: 2px solid #e0dfdf;
+    width: 90%;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+input:focus{
+    outline: none;
+    border-bottom: 2px solid #e9887b;
+}
+
+input:-webkit-autofill{
+    background-color: white;
+}
+
+input.ng-touched.ng-invalid{
+    border-bottom: 2px solid red;
+}
+
+input.ng-touched.ng-valid{
+    border-bottom: 2px solid #e9887b;
+}
+
+input[type=submit]{
+    background-color: white;
+    color: #e9887b;
+    border: none;
+    cursor: pointer;
+}
+
+input[type=submit]:focus{
+    border: none;
+}
+
+input[type=submit]:disabled{
+    color: #cecece;
+}
+
+
+h1{
+    color: #e9887b;
+    font-weight: 400;
+    font-size: 55px;
+    margin-top: 10px;
+    margin: 0;
+    font-family: 'Aspades';
+}

@@ -1,0 +1,31 @@
+.logoImg{
+    width: 100%;
+}
+
+.navContainer{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+a{
+    width: 100%;
+    text-align: left;
+    margin: 3px 0px;
+    padding-left: 4px;
+    text-transform: uppercase;
+    font-family: 'Bebas';
+    font-size: 20px;
+    color: #929292;
+    transition: all .5s;
+}
+
+a:hover, a:focus{
+    text-decoration: none;
+}
+
+a:hover{
+    background-color: #fcd6cb;
+}

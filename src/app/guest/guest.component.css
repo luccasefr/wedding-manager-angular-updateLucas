@@ -1,0 +1,24 @@
+.modalQrCode{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #000000ab;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modalQrCode img{
+
+}
+
+.exit-icon{
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    color: white;
+    cursor: pointer;
+}

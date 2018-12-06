@@ -1,0 +1,82 @@
+<div class="default-bg">
+    <div class="contentContainer row">
+        <div class="col-4 navBar">
+            <app-nav-bar actualRoute="/posts"></app-nav-bar>
+        </div>
+        <div class="col-8">
+            <div class="col-10">
+                <div class="imgTop">
+                    <div class="weddingNames">
+                        <p>Casamento</p>
+                        <p>{{user.name_1}} e {{user.name_2}}</p>
+                    </div>
+                </div>
+                <div class="page-content">
+                    <form (ngSubmit)="onSubmit()" #postForm='ngForm'>
+                        <h1><img height="35px" src="/assets/imgs/posts.png" class="mr-2" alt="">Mural</h1>
+                        <div class="words-Input mx-3">
+                            <div class="text-center words-box">
+                                <label for="">Palavras sensivel</label>
+                                <input type="text" [(ngModel)]="word" name="words" value="">
+                            </div>
+                            <div class="">
+                                <input type="submit" name="" value="Adicionar">
+                            </div>
+                        </div>
+                        <div class="words mx-3 mt-2">
+                            <span *ngFor="let word of sensibleWord" class="mr-3">{{word.word}} <fa-icon [icon]="faTimes" class="ml-1" style="cursor:pointer" (click)="deleteWord(word.id)"></fa-icon></span>
+                        </div>
+                    </form>
+                    <input type="checkbox" [ngModel]="user.publications_should_be_aproved==1" (input)="updatePublications($event.target.checked)" class="ml-3 mr-1 mt-3">Publicações devem ser aprovadas para aparecer no mural
+                    <div class="publications">
+                        <div class="row px-3 mx-0 mt-3 chose">
+                            <div class="col-6 px-1 " (click)="forApproval=false">
+                                <p [ngClass]="{'selected':!forApproval}">Mural</p>
+                            </div>
+                            <div class="col-6 px-1" (click)="forApproval=true">
+                                <p [ngClass]="{'selected':forApproval}">A serem aprovadas</p>
+                            </div>
+                        </div>
+                        <div class="posts">
+                            <div *ngIf="!forApproval" class="row mx-0" style="justify-content: center;">
+                                <div *ngFor="let post of posts" class="col-10 my-3 posts">
+                                    <div class="aproveBox" style="font-size:15px;">
+                                        <fa-icon [icon]="faTrashAlt" (click)="delete(post.id)" class="ml-1" style="cursor:pointer"></fa-icon>
+                                    </div>
+                                    <div class="postName">
+                                        <div class="guestPicture" [ngStyle]="{'backgroundImage':post.imgPerfil ? 'url('+post.imgPerfil+')': 'none'}"></div><span class="ml-2">{{post.guest.name}}</span>
+                                    </div>
+                                    <div class="text" style="padding-left: 2.7rem;">
+                                        {{post.text}}
+                                    </div>
+                                    <img *ngIf="post.image" [src]="post.image" width="100%" style="padding-left: 2.7rem;" alt="">
+                                    <div class="likeBox" style="padding-left: 2.7rem;">
+                                        {{post.guests_likes.length}}<fa-icon [icon]="faThumbsUp" class="ml-1" style="cursor:pointer"></fa-icon>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="forApproval" class="row mx-0" style="justify-content: center;">
+                                <div *ngFor="let post of postsForApproval" class="col-10 posts">
+                                    <div class="aproveBox">
+                                        <fa-icon [icon]="faCheckCircle" (click)="aprove(post.id)" class="ml-1 aprove" style="cursor:pointer"></fa-icon>
+                                        <fa-icon [icon]="faTimesCircle" (click)="delete(post.id)" class="ml-1 denny" style="cursor:pointer"></fa-icon>
+                                    </div>
+                                    <div class="postName">
+                                        <div class="guestPicture" [ngStyle]="{'backgroundImage':post.imgPerfil ? 'url('+post.imgPerfil+')': 'none'}"></div><span class="ml-2">{{post.guest.name}}</span>
+                                    </div>
+                                    <div class="text" style="padding-left: 2.7rem;">
+                                        {{post.text}}
+                                    </div>
+                                    <img *ngIf="post.image" [src]="post.image" width="100%" style="padding-left: 2.7rem;" alt="">
+                                    <div class="likeBox" style="padding-left: 2.7rem;">
+                                        {{post.guests_likes.length}}<fa-icon [icon]="faThumbsUp" class="ml-1" style="cursor:pointer"></fa-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

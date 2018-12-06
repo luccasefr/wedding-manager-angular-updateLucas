@@ -1,0 +1,8 @@
+.contextBox{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    background-color: white;
+    border: #ecab96 solid 2px;
+}

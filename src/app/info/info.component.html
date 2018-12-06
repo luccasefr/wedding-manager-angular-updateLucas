@@ -1,0 +1,116 @@
+<div class="default-bg">
+    <div class="contentContainer row">
+        <div class="col-4 navBar">
+            <app-nav-bar actualRoute="/info"></app-nav-bar>
+        </div>
+        <div class="col-8">
+            <div class="col-10">
+                <div class="imgTop">
+                    <div class="weddingNames">
+                        <p>Casamento</p>
+                        <p>{{user.name_1}} e {{user.name_2}}</p>
+                    </div>
+                </div>
+                <div class="page-content">
+                    <h1>Informações dos noivos</h1>
+                    <form #infoForm="ngForm" (ngSubmit)="onSubmit()">
+                        <div class="contentContainer row">
+                            <div class="col-6">
+                                <div class="simple-Input">
+                                    <label for="name">Nome</label>
+                                    <input type="text" [(ngModel)]="userToSave.name_1"  autocomplete="off" name="name_1" value="">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="simple-Input">
+                                    <label for="name">Nome</label>
+                                    <input type="text" [(ngModel)]="userToSave.name_2"  autocomplete="off" name="name_2" value="">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="simple-Input">
+                                    <label for="name">Quanto desejam gastar</label>
+                                    <input type="text" [(ngModel)]="userToSave.want_to_spent"  autocomplete="off" name="want_to_spent" value="">
+                                </div>
+                            </div>
+                            <div *ngIf="true" class="col-4">
+                                <div class="simple-Input">
+                                    <label for="email">Data do casamento</label>
+                                    <div style="display:flex;width:100%;">
+                                        <fa-icon [icon]="calendar" (click)="payment.toggle()" class="fa-2x dateIcon" style="position:absolute;bottom:0;"></fa-icon>
+                                        <input type="text" [value]="weddingDate" (dateSelect)="onDateSelect($event)" readonly="true" name="date" style="padding-left:35px" ngbDatepicker #payment="ngbDatepicker"/>
+                                    </div>
+                                    <!-- <button (click)="d.toggle()">Toggle</button> -->
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="simple-Input">
+                                    <label for="name">Hora da cerimonia</label>
+                                    <input type="text" [(ngModel)]="weddingHour" #uname="ngModel" required pattern="(([0-1][0-9])|([0-2][0-4])):[0-5][0-9]"  autocomplete="off" name="weddingHour" value="">
+                                </div>
+                            </div>
+                            <div class="col-12 mt-4">
+                                <h2>Endereço do Casamento</h2>
+                            </div>
+                            <div class="col-6">
+                                <div class="simple-Input">
+                                    <label for="name">Rua/Avenida</label>
+                                    <input type="text" [(ngModel)]="userToSave.street"  autocomplete="off" name="street" value="">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="simple-Input">
+                                    <label for="name">Número</label>
+                                    <input type="text" [(ngModel)]="userToSave.number"  autocomplete="off" name="number" value="">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="simple-Input">
+                                    <label for="name">Complemento</label>
+                                    <input type="text" [(ngModel)]="userToSave.complement"  autocomplete="off" name="complement" value="">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="simple-Input">
+                                    <label for="name">Bairro</label>
+                                    <input type="text" [(ngModel)]="userToSave.neighborhood"  autocomplete="off" name="bairro" value="">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="simple-Input">
+                                    <label for="name">Cidade</label>
+                                    <input type="text" [(ngModel)]="userToSave.city"  autocomplete="off" name="city" value="">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="simple-Input">
+                                    <label for="name">Estado</label>
+                                    <input type="text" [(ngModel)]="userToSave.state"  autocomplete="off" name="state" value="">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="simple-Input">
+                                    <label for="name">CEP</label>
+                                    <input type="text" [(ngModel)]="userToSave.cep"  autocomplete="off" name="cep" value="">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="simple-Input">
+                                    <label for="name">Convidados esperados</label>
+                                    <input type="text" [(ngModel)]="userToSave.waiting_guests"  autocomplete="off" name="waiting_guests" value="">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                            </div>
+                            <div class="col-4" style="align-items: flex-end;display: flex;justify-content: flex-end;">
+                                <div class="submit-Input">
+                                    <input type="submit" value="Salvar">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

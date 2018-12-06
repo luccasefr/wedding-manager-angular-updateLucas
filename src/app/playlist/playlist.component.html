@@ -1,0 +1,52 @@
+<div class="default-bg">
+    <div class="contentContainer row">
+        <div class="col-4 navBar">
+            <app-nav-bar actualRoute="/playlist"></app-nav-bar>
+        </div>
+        <div class="col-8">
+            <div class="col-10">
+                <div class="imgTop">
+                    <div class="weddingNames">
+                        <p>Casamento</p>
+                        <p>{{user.name_1}} e {{user.name_2}}</p>
+                    </div>
+                </div>
+                <div class="page-content">
+                    <h1>
+                        <img height="35px" src="/assets/imgs/playlist.png" class="mr-2" alt="">Playlist</h1>
+                    <div class="row m-0 mx-2" style="border-bottom:2px solid #929292">
+                        <div class="col-3 text-center">
+                            Música
+                        </div>
+                        <div class="col-3 text-center">
+                            Artista
+                        </div>
+                        <div class="col-3 text-center">
+                            Indicação
+                        </div>
+                        <div class="col-3 text-center">
+                            Curtidas
+                        </div>
+                    </div>
+                    <div *ngFor="let song of songs" class="row m-0 mx-2 py-2">
+                        
+                            <div class="col-3 text-center">
+                                {{song.name}}
+                            </div>
+                            <div class="col-3 text-center">
+                                {{song.artist}}
+                            </div>
+                            <div  class="col-3 text-center" >
+                                {{song.guest.name}}
+                            </div>
+                            <div class="col-3 text-center">
+                                {{song.likes}}
+                            </div>
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="bg">
+    <img src="/assets/imgs/logoPro.png" class="logoPro" alt="">
+    <div class="content-box">
+        <img src="/assets/imgs/logo-branca.png" class="logoImg" alt="">
+        <div class="loginBox">
+            <h1>Credenciais</h1>
+            <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="text" [(ngModel)]="user.email" required name="email" value="">
+                </div>
+                <div class="input-group">
+                    <label for="password">Senha</label>
+                    <input type="password" [(ngModel)]="user.password" required name="password" value="">
+                </div>
+                <img src="/assets/imgs/deco.png" class="decoImg" alt="">
+                <input type="submit" name="submit" value="Entrar">
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<div *ngIf="displayMessageBox" class="message">
+    <div *ngIf="showMessage" class="box">
+        <h3>{{title}}</h3>
+        <p>{{message}}</p>
+        <button type="button" (click)="exit()" name="button">Ok</button>
+    </div>
+    <div *ngIf="showWaitMessage" class="box-wait">
+        <fa-icon [icon]="faSpinner" class="fa-pulse"></fa-icon>
+        <p >{{waiMessage}}</p>
+    </div>
+</div>

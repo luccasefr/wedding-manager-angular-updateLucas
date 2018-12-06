@@ -1,0 +1,26 @@
+#progressBar {
+    background-color: #f99a82;
+    height: 30px;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    
+    
+}
+
+::-webkit-scrollbar-thumb{
+    width: 8px;
+    background: #f99a82;
+}
+
+.chart{
+    text-align: center;
+    padding-left: 0px;
+    margin-left: 0px;
+    border-left: 0px;
+}
+
+titleDiv{
+    height: 73px !important;
+}

@@ -1,0 +1,126 @@
+<div class="default-bg">
+    <div class="contentContainer row">
+        <div class="col-4 navBar">
+            <app-nav-bar actualRoute="/home"></app-nav-bar>
+        </div>
+        <div class="col-8">
+            <div class="col-10">
+                <div class="imgTop">
+                    <div class="weddingNames">
+                        <p>Casamento</p>
+                        <p>{{user.name_1}} e {{user.name_2}}</p>
+                    </div>
+                </div>
+                <div class="page-content">
+                    <h1>Home</h1>
+
+                    <div class="contentContainer row m-0 mx-2">
+                        <div class="row">
+                            <h1 *ngIf="daysLeft>0">{{daysLeft}} dias para o casamento</h1>
+                            <h1 *ngIf="daysLeft<0">O casamento ja aconteceu</h1>
+                            <h1 *ngIf="daysLeft==0">Parabens! O grande dia chegou!</h1>
+                        </div>
+
+
+
+                    </div>
+                    <div class="container-fluid">
+                        <div class="progress " style="height: 30px;">
+                            <div id="progressBar" class="progress-bar progress-bar-striped" role="progressbar"  [style.width]="percentageText"  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">{{percentageText}}</div>
+                        </div>
+                    </div>
+                    <div class="contentContainer row m-0 mx-2">
+                        <div class="col-6 row">
+                            <div class="col-md-12 titleDiv"><h1>Convidados</h1></div>
+                            <div class="col-md-8 chart">
+                                <p style="font-size: 80%">CONFIRMADOS X NÃO CONFIRMADOS</p>
+                                <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" [colors]="doughnutColor" (chartHover)="chartHovered($event)"
+                                    (chartClick)="chartClicked($event)">
+                                </canvas>
+                            </div>
+
+                            <div class="col-md- 4" style="overflow: auto; max-height: 250px;">
+                                <div *ngFor="let guest of guests">
+
+                                    <p style="font-size: 80%">{{guest.name}}
+                                        <span *ngIf="guest.confirmed==1">
+                                            <strong>- CONFIRMADO</strong>
+                                        </span>
+                                    </p>
+                                </div>
+
+                            </div>
+                            <!-- <canvas id="doughnutChart"></canvas> -->
+
+                        </div>
+                        <div class="col-6 row">
+                            <div class="col-md-12 titleDiv"><h1>Gastos</h1></div>
+                            <div class="col-md-8 chart">
+                                <canvas baseChart [data]="doughnutChartData2" [labels]="doughnutChartLabels2" [chartType]="doughnutChartType2" [colors]="doughnutColor2" (chartHover)="chartHovered($event)"
+                                    (chartClick)="chartClicked($event)">
+                                </canvas>
+                            </div>
+
+                            <div class="col-md-4">
+                                <p>QUANTO QUEREMOS GASTAR:
+                                    <span>
+                                        <strong>R${{user.want_to_spent}}</strong>
+                                    </span>
+                                </p>
+                                <p>QUANTO jÁ GASTAMOS:
+                                    <span>
+                                        <strong>R${{user.expenses_total}}</strong>
+                                    </span>
+                                </p>
+                                {{totalGuests}} {{confirmedCount}}
+                            </div>
+                            <!-- <canvas id="doughnutChart"></canvas> -->
+
+                        </div>
+                        <!-- <div class="col-6 row">
+                            <div class="col-md-12 titleDiv"><h1>Gastos</h1></div>
+                            <div class="col-md-8 chart">
+                                <canvas baseChart [data]="doughnutChartData2" [labels]="doughnutChartLabels2" [chartType]="doughnutChartType2" [colors]="doughnutColor2" (chartHover)="chartHovered($event)"
+                                    (chartClick)="chartClicked($event)">
+                                </canvas>
+                            </div>
+                            <div class="col-md-4" style="overflow: auto; max-height: 250px;">
+                                <p>QUANTO QUEREMOS GASTAR:
+                                    <span>
+                                        <strong>R${{user.want_to_spent}}</strong>
+                                    </span>
+                                </p>
+                                <p>QUANTO jÁ GASTAMOS:
+                                    <span>
+                                        <strong>R${{user.expenses_total}}</strong>
+                                    </span>
+                                </p>
+                                {{totalGuests}} {{confirmedCount}}
+                            </div>
+
+                        </div> -->
+
+                    </div>
+                    <div class="contentContainer row m-0 mx-2">
+                        <div class="col-4">
+                            <h1>vizualizações</h1>
+                            <div class="">
+
+                            </div>
+
+                        </div>
+                        <div class="col-3">
+                            <h1>curtidas</h1>
+                        </div>
+                        <div class="col-5">
+                            <h1>Fotos com os noivos</h1>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

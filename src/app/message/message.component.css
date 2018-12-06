@@ -1,0 +1,51 @@
+.message{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000000bd;
+    z-index: 100;
+}
+
+.box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+    padding-bottom: 5px;
+    width: 300px;
+}
+
+.box-wait{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+    width: 300px;
+}
+
+fa-icon{
+    margin-right: 10px;
+    display: inline-flex;
+    font-size: 22px;
+    color: #d86253;
+}
+
+button{
+    background-color: #e9887b;
+    float: right;
+    border: none;
+    color: white;
+    padding: 5px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}

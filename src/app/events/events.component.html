@@ -1,0 +1,179 @@
+<div class="default-bg">
+  <div class="contentContainer row">
+    <div class="col-4 navBar">
+      <app-nav-bar actualRoute="/events"></app-nav-bar>
+    </div>
+    <div class="col-8">
+      <div class="col-10">
+        <div class="imgTop">
+          <div class="weddingNames">
+            <p>Casamento</p>
+            <p>{{user.name_1}} e {{user.name_2}}</p>
+          </div>
+        </div>
+        <div class="page-content">
+          <div class="col-md-12 row">
+            <h1>Eventos</h1>
+          </div>
+          <form #infoForm="ngForm" (ngSubmit)="onSubmit(infoForm)">
+            <div class="contentContainer row m-0 mx-2" style="border-bottom:2px solid #929292">
+              <div class="col-8">
+                <div class="simple-Input">
+                  <label for="name">Nome</label>
+                  <input type="text" [(ngModel)]="data.name" autocomplete="off" name="name" value="">
+                </div>
+              </div>
+              <div *ngIf="true" class="col-4">
+                <div class="simple-Input">
+                  <label for="date">Data do Evento</label>
+                  <div style="display:flex;width:100%;">
+                    <fa-icon [icon]="calendar" (click)="payment.toggle()" class="fa-2x dateIcon" style="position:absolute;bottom:0;"></fa-icon>
+                    <input type="text" [value]="eventDate" (dateSelect)="onDateSelect($event)" readonly="true" name="date" style="padding-left:35px"
+                      ngbDatepicker #payment="ngbDatepicker" />
+                  </div>
+
+                  <!-- <button (click)="d.toggle()">Toggle</button> -->
+
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="simple-Input">
+                  <label for="name">Rua/Avenida</label>
+                  <input type="text" [(ngModel)]="data.street" autocomplete="off" name="street" value="">
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="simple-Input">
+                  <label for="name">Número</label>
+                  <input type="text" [(ngModel)]="data.number" autocomplete="off" name="number" value="">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="simple-Input">
+                  <label for="name">Complemento</label>
+                  <input type="text" [(ngModel)]="data.complement" autocomplete="off" name="complement" value="">
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="simple-Input">
+                  <label for="name">Bairro</label>
+                  <input type="text" [(ngModel)]="data.neighborhood" autocomplete="off" name="neighborhood" value="">
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="simple-Input">
+                  <label for="name">Cidade</label>
+                  <input type="text" [(ngModel)]="data.city" autocomplete="off" name="city" value="">
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="simple-Input">
+                  <label for="name">Estado</label>
+                  <input type="text" [(ngModel)]="data.state" autocomplete="off" name="state" value="">
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="simple-Input">
+                  <label for="name">CEP</label>
+                  <input type="text" [(ngModel)]="data.cep" autocomplete="off" name="cep" value="">
+                </div>
+              </div>
+              <div class="col-12">
+                <label for="name"></label>
+              </div>
+              <div class="col-4">
+                <div class="simple-Input">
+                  <label for="name">Hora do evento</label>
+                  <input type="time" [(ngModel)]="eventHour" #uname="ngModel" required pattern="(([0-1][0-9])|([0-2][0-4])):[0-5][0-9]" autocomplete="off"
+                    name="eventHour" value="">
+                </div>
+              </div>
+              <div class="col-4">
+              </div>
+              <div class="col-4" style="align-items: flex-end; display: flex; justify-content: flex-end;">
+                <div class="submit-Input">
+                  <input [disabled]="!(infoForm.valid && eventDate!=null)" *ngIf="!sending" type="submit" value="Salvar">
+                  <button *ngIf="sending" disabled="true" class="standard d-flex">Enviando
+                    <fa-icon [icon]="faSpinner" class="ml-2" [pulse]="true"></fa-icon>
+                  </button>
+                </div>
+              </div>
+              <div class=" col-12 row">
+                <label for="name"></label>
+              </div>
+            </div>
+          </form>
+
+          <div *ngFor="let event of events" class="px-2">
+            <form #guestForm="ngForm" (ngSubmit)="updateGuests(event)" style="border-bottom:2px solid #929292">
+              <div class="col-md-12 row">
+                <div class="col-md-4">
+                  <h1>{{event.name}}</h1>
+                </div>
+                <div class="col-md-8 centralize customBtn">
+                    <button class="standard btn-block" (click)="showHide(event.buttonId, event)" name="event.buttonId">Lista de convidados</button>
+                </div>
+              </div>
+              <div class="contentContainer row  m-0 mx-2 page" style="max-height: 250px; position: relative;">
+                <div class=" col-3 simple-Input justify-content-md-center">
+                  <div class="row">
+                    <label for=""></label>
+                  </div>
+                  <div class="row">
+                    <label for="">Data: {{event.date}}</label>
+                    <label for="">Data: {{event.id}}</label>
+                    <label for="">Data: {{event.index}}</label>
+                  </div>
+                  <div class="row">
+                    <label for="">Endereço: {{event.address.street}}</label>
+                  </div>
+                </div>
+                <div *ngIf="event.buttonBool" class="col-9" id="" style="max-height: 250px; max-width: 800px; overflow-y: scroll; ">
+                  <div>
+                    <table class="col-12">
+                      <thead>
+                        <tr>
+                          <th>convidado</th>
+                          <th>convidar</th>
+                          <th>confirmado</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let guest of event.allGuests" class="col-12">
+                          <td>{{guest.name}}</td>
+                          <td class="centralize">
+                            <div>
+                              <input type="checkbox" [(ngModel)]="guest.invited" name="event-{{event.id}}_guest-{{guest.id}}">
+                            </div>
+                          </td>
+                          <td class="centralize">
+                            <div>
+                              <fa-icon *ngIf="guest.invited && guest.confirmed" [icon]="faCheckSquare"></fa-icon>
+                              <fa-icon *ngIf="guest.invited && !guest.confirmed" [icon]="faSquare"></fa-icon>
+                            </div>
+                          </td>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                
+              </div>
+
+              <div *ngIf="event.buttonBool" class="contentContainer row  m-0 mx-2 page" style="padding-bottom: 15px; padding-top: 15px">
+                <div class="col-12 justify-content-md-center" style="align-items: flex-center; display: flex; justify-content: flex-center;">
+                  <div class="submit-Input">
+                    <input *ngIf="!event.sending" type="submit" value="Atualizar convidados">
+                    <button *ngIf="event.sending" disabled="true" class="standard d-flex">Atualizando
+                      <fa-icon [icon]="faSpinner" class="ml-2" [pulse]="true"></fa-icon>
+                    </button>
+                  </div>
+                  <button class="standard ml-3" (click)="delete(event)">Deletar&nbsp;Evento</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

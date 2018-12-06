@@ -1,0 +1,5 @@
+<div *ngIf="show" [ngStyle]="{'top':yPos+'px','left':xPos+'px'}" class="contextBox">
+    <div *ngFor="let item of options" (click)="item.func()" class="">
+        {{item.name}}
+    </div>
+</div>

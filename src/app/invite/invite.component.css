@@ -1,0 +1,33 @@
+.colorPicker{
+    height: 19px;
+    width: 19px;
+    border-radius: 5px;
+    border: 2px solid #d2cbcf;
+    outline: black;
+}
+
+label.button,button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    border-bottom: 2px solid #cac2c2;
+    width: 28px;
+    text-align: center;
+}
+
+label.button:hover,button:hover{
+    color: #f99a82;
+    border-bottom: 2px solid #f99a82;
+}
+
+img{
+    border: 2px solid transparent;
+}
+
+img:hover:not(.selected){
+    border: 2px solid gray;
+}
+
+.selected{
+    border: 2px solid #f99a82;
+}
